@@ -101,10 +101,8 @@ def _bulk_ingest_embeddings(
             text_field: text,
             "metadata": metadata,
         }
-        if is_aoss:
-            request["id"] = _id
-        else:
-            request["_id"] = _id
+        print("HERE", _id)
+        request["_id"] = _id
         requests.append(request)
         return_ids.append(_id)
     bulk(client, requests, max_chunk_bytes=max_chunk_bytes)
